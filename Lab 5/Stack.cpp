@@ -2,85 +2,130 @@
 #include <string>
 using namespace std;
 
-class Node {
+class Node
+{
 public:
     string name;
-    Node* next_ptr;
+    Node *next_ptr;
 
-    Node(string name) {
+    Node(string name, Node *next_ptr = nullptr)
+    { // Constructor with default nullptr
         this->name = name;
-        this->next_ptr = nullptr;
+        this->next_ptr = next_ptr;
     }
 };
 
-class Stack {
-    
+class Stack
+{
+private:
+    Node *top; // Only need top pointer for stack
+
 public:
-    Node* top;
-    int max_size;
-    int current_size;
-
-    Stack(int size) { 
-        top = nullptr;
-        max_size = size;
-        current_size = 0;
+    Stack(Node *top = nullptr)
+    { // Constructor initializes top
+        this->top = top;
+        if (top)
+            top->next_ptr = nullptr;
     }
 
-    bool isFull() {
-    return current_size == max_size;
-}
+    void push(Node *node)
+    {
+        if (!node)
+            return; // Check for null pointer
 
-    // add new node at the top
-    void push(string name) {
-        if (isFull()) {
-            cout << "Stack is full. Cannot push." << endl;
+        node->next_ptr = top; // New node points to current top
+        top = node;           // Update top to new node
+    }
+
+    void pop()
+    {
+        if (!top)
+        {
+            cout << "Stack is empty" << endl;
             return;
         }
 
-        Node* new_node = new Node(name);
-        new_node->next_ptr = top;
-        top = new_node;
-        current_size++;
-        cout << "Pushed: " << top->name << endl;
-    }
-    
-    void peek() {
-        if (top == nullptr) {
-            cout << "Stack is empty. Nothing to peek." << endl;
-        } else {
-            cout << "Top of stack: " << top->name << endl;
-        }
-    }
-
-    void pop() {
-        if (top == nullptr) {
-            cout << "Stack is empty. Cannot pop." << endl;
-            return;
-        }
-
-        Node* temp = top;
+        Node *temp = top;
         top = top->next_ptr;
-        cout << "Popped: " << temp->name << endl;
         delete temp;
-        current_size--;
+    }
+
+    string peek() const
+    {
+        if (!top)
+        {
+            cout << "Stack is empty" << endl;
+            return "";
+        }
+        return top->name;
+    }
+
+    void display_stack()
+    {
+        Node *current = top;
+        if (!current)
+        {
+            cout << "Stack is empty" << endl;
+            return;
+        }
+        cout << "Stack: ";
+        while (current != nullptr)
+        {
+            cout << current->name;
+            current = current->next_ptr;
+            if (current != nullptr)
+                cout << " -> ";
+        }
+        cout << endl;
+    }
+
+    // Getter for top to allow memory cleanup in main
+    Node *get_top() const
+    {
+        return top;
+    }
+
+    // Check if stack is empty
+    bool is_empty() const
+    {
+        return top == nullptr;
     }
 };
 
-int main() {
-    cout << "Stack" << endl;
-    Stack stack(4);
+int main()
+{
+    // Create nodes dynamically
+    Node *node1 = new Node("Ali");
+    Node *node2 = new Node("Ahmed");
+    Node *node3 = new Node("Alee");
 
-    stack.push("Ali");
-    stack.push("Ahmed");
-    stack.push("Alee");
-    stack.push("Siraj");
-;
-    stack.peek();
+    // Create stack and push nodes
+    Stack stack;
+    stack.push(node1);
+    stack.push(node2);
+    stack.push(node3);
 
+    // Display the stack
+    stack.display_stack();
+
+    // Example of peek operation
+    cout << "Top element: " << stack.peek() << endl;
+    cout << "Stack after peek: ";
+    stack.display_stack();
+
+    // Example of pop operation
+    cout << "After popping top element: ";
     stack.pop();
+    stack.display_stack();
 
-    cout << "After popping: ";
-    stack.peek();
+    // Clean up memory
+    Node *current = stack.get_top();
+    while (current)
+    {
+        Node *temp = current;
+        current = current->next_ptr;
+        delete temp;
+    }
 
     return 0;
 }
