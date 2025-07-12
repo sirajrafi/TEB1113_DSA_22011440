@@ -11,7 +11,7 @@ First lab GitHub Repo
 |3|[Doubly](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%203/Doubly.cpp)<br>[Singly](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%203/Singly.cpp)|
 |4|[Doubly Circular](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%204/DoublyCircular.cpp)<br>[Singly Circular](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%204/SinglyCircular.cpp)|
 |5|[Stack](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%205/Stack.cpp)|
-|6|[Array Queue]()[Circular Queue](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%206/CircularQueue.cpp)<br>[Queue](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%206/Queue.cpp)|
+|6|[Array Queue](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%206/ArrayQueue.cpp)<br>[Circular Queue](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%206/CircularQueue.cpp)<br>[Queue](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%206/Queue.cpp)|
 |7|[Tree](https://github.com/sirajrafi/TEB1113_DSA_22011440/blob/main/Lab%207/Tree.cpp)|
 
 
