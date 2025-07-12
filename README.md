@@ -1,6 +1,8 @@
 # TEB1113_DSA_22011440
 First lab GitHub Repo
+Lab tasks for ADS May 2025.
 22011440 
+Muhammad Siraj
 
 ## Lab Tasks
 
